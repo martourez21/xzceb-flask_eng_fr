@@ -26,9 +26,11 @@ def english_to_french(english_text):
     translation = lt.translate(
     english_text,
     model_id='en-fr').get_result()
-    print(json.dumps(translation, indent=2, ensure_ascii=False))
+    for data in translation['translations']:
+        print(data['translation'])
+    #print(json.dumps(translation, indent=2, ensure_ascii=False))
 
-    return translation
+    return data['translation']
 
 def french_to_english(french_text):
     """
@@ -37,9 +39,11 @@ def french_to_english(french_text):
     translation = lt.translate(
         french_text,
         model_id='fr-en').get_result()
-    print(json.dumps(translation, indent=2, ensure_ascii=False))
+    for data in translation['translations']:
+        print(data['translation'])
+    #print(json.dumps(translation, indent=2, ensure_ascii=False))
 
-    return translation
+    return data['translation']
 
 english_to_french("""Hello! my name is Nestor Martourez,
 a full stack application developer. This is the begining 
