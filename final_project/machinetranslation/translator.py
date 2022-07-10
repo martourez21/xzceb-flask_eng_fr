@@ -1,7 +1,6 @@
 """
 This module uses the ibm-watson api to render translations
 """
-import json
 import os
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson import LanguageTranslatorV3
@@ -26,9 +25,9 @@ def english_to_french(english_text):
     translation = lt.translate(
     english_text,
     model_id='en-fr').get_result()
+    data = {}
     for data in translation['translations']:
         print(data['translation'])
-    #print(json.dumps(translation, indent=2, ensure_ascii=False))
 
     return data['translation']
 
@@ -39,9 +38,9 @@ def french_to_english(french_text):
     translation = lt.translate(
         french_text,
         model_id='fr-en').get_result()
+    data = {}
     for data in translation['translations']:
         print(data['translation'])
-    #print(json.dumps(translation, indent=2, ensure_ascii=False))
 
     return data['translation']
 
